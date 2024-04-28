@@ -4,7 +4,7 @@
   "description": "This repository is for hands-on concepts of GraphQL",
   "main": "index.js",
   "scripts": {
-	"dev": "nodemon index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "redis": "^4.6.13"
   }
 }

@@ -6,6 +6,10 @@ const cors = require("cors");
 const axios = require("axios");
 const app = express();
 
+const { client } = require("./redis-config/client");
+const { getProductsRoute } = require("./Routes/productRoutes");
+
+// Fake data for testing the graphql endpoint
 const fakeData = [
   {
     id: 1,
@@ -37,6 +41,7 @@ const fakeData = [
 ];
 
 async function startTodoServer() {
+  await client.connect();
   const server = new ApolloServer({
     typeDefs: `
 		type Todo{
@@ -87,6 +92,7 @@ async function startTodoServer() {
   app.use(cors());
 
   app.use("/graphql", expressMiddleware(server));
+  app.get("/getProductList", getProductsRoute);
 
   app.listen(8000, () => console.log("Server up and running at port 8000"));
 }
